@@ -6,7 +6,7 @@ import ru.fa.finance.model.TransactionType;
 public class TransactionPrinter {
 
     public static void print(Transaction tx) {
-        String icon = tx.getType() == TransactionType.INCOME ? "➕" : "➖";
+        String icon = tx.getType() == TransactionType.INCOME ? "+" : "-";
         System.out.printf("[%s] ID: %d | %s %-7s | Категория: %-10s | Сумма: %,.2f руб.%n",
                 tx.getDate(),
                 tx.getId(),
