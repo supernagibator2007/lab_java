@@ -11,12 +11,10 @@ public class Transaction {
     private final Category category;
     private String description;
 
-    // Перегруженный конструктор 1: С описанием по умолчанию (пустая строка)
     public Transaction(long id, BigDecimal amount, LocalDate date, TransactionType type, Category category) {
         this(id, amount, date, type, category, "");
     }
 
-    // Перегруженный конструктор 2: Полный
     public Transaction(long id, BigDecimal amount, LocalDate date, TransactionType type, Category category, String description) {
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Сумма транзакции должна быть строго больше 0");
@@ -35,10 +33,9 @@ public class Transaction {
         this.date = date;
         this.type = type;
         this.category = category;
-        changeDescription(description); // использование метода с валидацией
+        changeDescription(description);
     }
 
-    // Изменение состояния через осмысленный метод (вместо авто-сеттера)
     public void changeDescription(String newDescription) {
         if (newDescription == null) {
             throw new IllegalArgumentException("Описание не может быть null");
