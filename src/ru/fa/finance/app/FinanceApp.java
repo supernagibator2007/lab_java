@@ -21,7 +21,7 @@ public class FinanceApp {
         List<Transaction> transactions = new ArrayList<>();
 
         transactions.add(new Transaction(1, new BigDecimal("45000.00"), LocalDate.now(), TransactionType.INCOME, salary, "Основной оклад"));
-        transactions.add(new Transaction(2, new BigDecimal("1200.00"), LocalDate.now(), TransactionType.EXPENSE, food)); // Конструктор без описания
+        transactions.add(new Transaction(2, new BigDecimal("1200.00"), LocalDate.now(), TransactionType.EXPENSE, food));
         transactions.add(new Transaction(3, new BigDecimal("350.00"), LocalDate.now().minusDays(1), TransactionType.EXPENSE, transport, "Поездки на такси"));
         transactions.add(new Transaction(4, new BigDecimal("2300.00"), LocalDate.now().minusDays(1), TransactionType.EXPENSE, food, "Супермаркет"));
         transactions.add(new Transaction(5, new BigDecimal("7000.00"), LocalDate.now().minusDays(2), TransactionType.INCOME, salary, "Фриланс"));
@@ -33,8 +33,8 @@ public class FinanceApp {
         BigDecimal finalBalance = TransactionCalculator.calculateBalance(primaryWallet, transactions);
         System.out.println("Итоговый баланс кошелька '" + primaryWallet.getName() + "': " + finalBalance + " руб.");
 
+        // создание транзакции с отрицательным балансом (нужно было по заданию)
         try {
-            // Попытка создать транзакцию с нулевой/отрицательной суммой
             new Transaction(6, new BigDecimal("-100.00"), LocalDate.now(), TransactionType.EXPENSE, food);
         } catch (IllegalArgumentException e) {
             System.out.println("Перехвачено исключение бизнес-валидации: " + e.getMessage());
